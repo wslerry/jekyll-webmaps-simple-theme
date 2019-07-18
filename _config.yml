@@ -18,7 +18,8 @@ plugins:
 exclude : [
    "Gemfile",
    "Gemfile.lock",
-   "jekyll-maps.gemspec",
+   "jekyll-webmaps-simple-theme.gemspec",
    "README.md",
    "LICENSE.txt",
+   "jekyll-webmaps-simple-theme-0.1.0.gem",
    ]
