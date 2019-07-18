@@ -1,0 +1,42 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="Robots" content="index, follow">
+
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }} | {{ page.description }}">
+
+  <!-- - -->
+  {%- seo title=false -%}
+  <!-- - -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css"/>
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/leaflet.css"/>
+
+  <!-- JS -->
+  <script src="{{ site.url }}/assets/js/jquery.min.js"></script>
+  <script src="{{ site.url }}/assets/js/bootstrap.min.js"></script>
+	<script src="{{ site.url }}/assets/js/leaflet.js"></script>
+
+  {% for js in site.data.mapdata.base %}
+  {% if js.extrajs == true %}
+  <script type="text/javascript" src="{{ js.leaflet-js }}"></script>
+  {% endif %}
+  {% endfor %}
+
+  {% for js in site.data.mapdata.overlay %}
+  {% if js.extrajs == true %}
+  <script type="text/javascript" src="{{ js.leaflet-js }}"></script>
+  {% endif %}
+  {% endfor %}
+
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+</head>

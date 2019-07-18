@@ -1,0 +1,22 @@
+title: Jekyll Webmaps Theme
+email: your_email@mail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Web Mapping in static website
+baseurl: ""
+url: ""
+port: 4010
+google_analytics: UA-000000000-0
+
+# change this if you already installed the theme locally -->  theme: jekyll-maps
+remote_theme: "wslerry/jekyll-webmaps-simple-theme"
+
+plugins:
+  - github-pages
+
+exclude : [
+   "Gemfile",
+   "Gemfile.lock",
+   "jekyll-maps.gemspec",
+   "README.md",
+   "LICENSE.txt",
+   ]

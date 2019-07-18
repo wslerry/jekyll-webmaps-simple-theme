@@ -1,0 +1,68 @@
+<div id='container'>
+  <div id='map' class="leaflet-container leaflet-fade-anim" style="position: relative;"></div>
+  <script>
+    {% for map in site.data.mapdata.base %}
+      var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
+        attribution: '{% if map.attribution %}{{ map.attribution }}{% endif %}'
+      });
+    {% endfor %}
+    {% for map in site.data.mapdata.overlay %}
+      var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
+        attribution: '{% if map.attribution %}{{ map.attribution }}{% endif %}'
+      });
+    {% endfor %}
+
+    {% if site.data.mapdata.map_bound == true %}
+      {% for map in site.data.mapdata.param %}
+        var corner1  = L.latLng({{ map.y1 }}, {{ map.x1 }}),
+        corner2  = L.latLng({{ map.y2 }}, {{ map.x2 }});
+        var bounds = L.latLngBounds(corner1, corner2 );
+
+
+        {% for map in site.data.mapdata.param %}
+        var map = L.map('map', {
+          center: [{{ map.lat }},{{ map.long }}], //lat,long 2.750239, 112.996826
+          maxBounds: bounds,
+          zoom: {{ map.zoom }},
+          maxZoom: {{ map.maxZoom }},
+          minZoom: {{ map.minZoom }},
+          layers: [
+          {% for map in site.data.mapdata.base %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %},
+          {% for map in site.data.mapdata.overlay %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %}]
+        });
+        {% endfor %}
+      {% endfor %}
+    {% else %}
+      {% for map in site.data.mapdata.param %}
+        var map = L.map('map', {
+          center: [{{ map.lat }},{{ map.long }}], //lat,long 2.750239, 112.996826
+          zoom: {{ map.zoom }},
+          maxZoom: {{ map.maxZoom }},
+          minZoom: {{ map.minZoom }},
+          layers: [
+          {% for map in site.data.mapdata.base %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %},
+          {% for map in site.data.mapdata.overlay %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %}]
+        });
+      {% endfor %}
+    {% endif %}
+
+    // map.fitBounds([
+    //   [-0.04073073, 108.99437294],
+    //   [5.75707846, 115.89948784]
+    // ]);
+
+    var baseMaps = {
+      {% for map in site.data.mapdata.base %}
+      "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+      {% endfor %}
+    };
+
+    var overlay = {
+      {% for map in site.data.mapdata.overlay %}
+      "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+      {% endfor %}
+    };
+
+    L.control.layers(baseMaps, overlay, {collapsed: true}).addTo(map);
+  </script>
+</div>
