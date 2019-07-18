@@ -17,15 +17,10 @@ param:
 # edit this if you need to add data into your map.
 geojson:
   -
-    name: Mocking Data
+    name: Mock points
     id: mock
     type: point
     url: 'assets/geo/json/mock_population.geojson'
-  -
-    name: Planted Forest
-    id: planted
-    type: polygon
-    url: 'assets/geo/json/planted_forest.geojson'
   -
     name: Administration
     id: admin
@@ -67,26 +62,28 @@ base:
 
 overlay:
   # -
+  #   select: false
+  #   extrajs: false
   #   leaflet-js:
   #   format: L.tileLayer
   #   id: esri_sat
   #   name: ESRI Imagery
   #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
   #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
-  -
-    select: false
-    extrajs: false
-    leaflet-js:
-    format: L.tileLayer
-    id: esri_street
-    name: ESRI Street
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
-    attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
-  -
-    extrajs: false
-    leaflet-js:
-    format: L.tileLayer
-    id: esri_topo
-    name: ESRI Topo
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
-    attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   select: false
+  #   extrajs: false
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_street
+  #   name: ESRI Street
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   extrajs: false
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_topo
+  #   name: ESRI Topo
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'

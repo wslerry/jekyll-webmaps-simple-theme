@@ -83,5 +83,14 @@
 
     L.control.layers(baseMaps, overlay, {collapsed: true}).addTo(map);
 
+    map.addControl(new L.Control.Fullscreen());
+
+    // L.Routing.control({
+    //   waypoints: [
+    //   L.latLng(4.3868, 114.0169),
+    //   L.latLng(3.1947, 113.0874)
+    //   ],
+    //   routeWhileDragging: true,
+    // }).addTo(map);
   </script>
 </div>
