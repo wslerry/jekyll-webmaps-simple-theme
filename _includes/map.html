@@ -46,6 +46,24 @@
       {% endfor %}
     {% endif %}
 
+    // load geojson data
+    {% if site.data.mapdata.load_geojson == true %}
+
+      function forEachFeature(feature, layer) {
+        var popupContent = feature.properties.toLocaleString() +'</p>';
+        layer.bindPopup(popupContent);
+      }
+
+      {% for map in site.data.mapdata.geojson %}
+        var {{ map.id }}= L.geoJson(null, {onEachFeature: forEachFeature});
+      {% endfor %}
+
+      {% for map in site.data.mapdata.geojson %}
+        $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% endfor %}
+    {% endif %}
+
+
     var baseMaps = {
       {% for map in site.data.mapdata.base %}
       "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
@@ -56,8 +74,14 @@
       {% for map in site.data.mapdata.overlay %}
       "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
       {% endfor %}
+      {% if site.data.mapdata.load_geojson == true %}
+        {% for map in site.data.mapdata.geojson %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+      {% endif %}
     };
 
     L.control.layers(baseMaps, overlay, {collapsed: true}).addTo(map);
+
   </script>
 </div>

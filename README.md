@@ -2,8 +2,7 @@
 
 [![GitHub version](https://badge.fury.io/gh/wslerry%2Fjekyll-webmaps-simple-theme.svg)](https://badge.fury.io/gh/wslerry%2Fjekyll-webmaps-simple-theme)
 [![Gem Version](https://badge.fury.io/rb/jekyll-webmaps-simple-theme.svg)](https://badge.fury.io/rb/jekyll-webmaps-simple-theme)
-[![Ruby gem](https://img.shields.io/gem/v/jekyll-theme-basically-basic.svg)](https://rubygems.org/gems/jekyll-theme-basically-basic)
-[![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.80-blue.svg)](https://jekyllrb.com/)
+[![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D3.7-blue.svg)](https://jekyllrb.com/)
 
 Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
 

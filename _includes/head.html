@@ -21,6 +21,7 @@
 
   <!-- JS -->
   <script src="{{ site.url }}/assets/js/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{{ site.url }}/assets/js/bootstrap.min.js"></script>
 	<script src="{{ site.url }}/assets/js/leaflet.js"></script>
   {% for js in site.data.mapdata.base %}{% if js.extrajs == true %}<script type="text/javascript" src="{{ js.leaflet-js }}"></script>{% endif %}{% endfor %}

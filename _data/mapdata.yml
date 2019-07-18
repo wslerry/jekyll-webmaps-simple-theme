@@ -1,5 +1,6 @@
 # Map parameter
 map_bound: true
+load_geojson: true
 param:
   -
     lat: 2.750239
@@ -11,6 +12,25 @@ param:
     y1: -0.04073073 #latitude lower left
     x2: 115.89948784 #longitude upper right
     y2: 5.75707846 #latitude upper right
+
+# load geojson data.
+# edit this if you need to add data into your map.
+geojson:
+  -
+    name: Mocking Data
+    id: mock
+    type: point
+    url: 'assets/geo/json/mock_population.geojson'
+  -
+    name: Planted Forest
+    id: planted
+    type: polygon
+    url: 'assets/geo/json/planted_forest.geojson'
+  -
+    name: Administration
+    id: admin
+    type: polygon
+    url: 'assets/geo/json/sarawak_admin.geojson'
 
 base:
   -
