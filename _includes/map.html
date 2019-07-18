@@ -3,12 +3,12 @@
   <script>
     {% for map in site.data.mapdata.base %}
       var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
-        attribution: '{% if map.attribution %}{{ map.attribution }}{% endif %}'
+        attribution: 'Developed by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
       });
     {% endfor %}
     {% for map in site.data.mapdata.overlay %}
       var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
-        attribution: '{% if map.attribution %}{{ map.attribution }}{% endif %}'
+        attribution: 'Developed by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
       });
     {% endfor %}
 
@@ -45,11 +45,6 @@
         });
       {% endfor %}
     {% endif %}
-
-    // map.fitBounds([
-    //   [-0.04073073, 108.99437294],
-    //   [5.75707846, 115.89948784]
-    // ]);
 
     var baseMaps = {
       {% for map in site.data.mapdata.base %}
