@@ -1,5 +1,6 @@
 # jekyll-webmaps-simple-theme
 
+[![Gem Version](https://badge.fury.io/rb/jekyll-webmaps-simple-theme.svg)](https://badge.fury.io/rb/jekyll-webmaps-simple-theme)
 [![Ruby gem](https://img.shields.io/gem/v/jekyll-theme-basically-basic.svg)](https://rubygems.org/gems/jekyll-theme-basically-basic)
 [![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.80-blue.svg)](https://jekyllrb.com/)
 
@@ -52,4 +53,3 @@ To add a custom directory to your theme-gem, please edit the regexp in `jekyll-w
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
