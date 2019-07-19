@@ -15,7 +15,6 @@
   <!-- - -->
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.url }}/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
   <!-- JS -->
@@ -24,6 +23,7 @@
   <script src="{{ site.url }}/assets/js/bootstrap.min.js"></script>
 	<script src="{{ site.url }}/assets/js/leaflet.js"></script>
   <script src='{{ site.url }}/assets/js/Leaflet.fullscreen.min.js'></script>
+  <script src='{{ site.url }}/assets/js/ionicons.js'></script>
   <!-- <script src='{{ site.url }}/assets/js/leaflet-routing-machine.js'></script> -->
   {% for js in site.data.mapdata.base %}{% if js.extrajs == true %}<script type="text/javascript" src="{{ js.leaflet-js }}"></script>{% endif %}{% endfor %}
   {% for js in site.data.mapdata.overlay %}{% if js.extrajs == true %}<script type="text/javascript" src="{{ js.leaflet-js }}"></script>{% endif %}{% endfor %}

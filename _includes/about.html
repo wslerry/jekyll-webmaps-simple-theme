@@ -10,14 +10,15 @@
       </div>
       <div class="modal-body">
         <p>
+          Write something here...
+        </p>
+
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac sapien vel elit tempus consequat semper ac metus. Quisque vel fringilla mauris.
           Nulla elit augue, rhoncus at ornare eu, rhoncus vitae tortor. Etiam egestas ex urna, a gravida quam ornare ultricies.
         </p>
-        <div style="text-align:center">
-            <p style="font-size: 12px;">
-            &copy; {{ site.time | date: '%Y' }} {{ site.title }} - Developed by <a href="https://lerryws.xyz/">wslerry</a>.
-            </p>
-        </div>
+
+        {% include attributes.html %}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

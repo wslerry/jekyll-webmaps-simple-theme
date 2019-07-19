@@ -1,4 +1,6 @@
-# Map parameter
+# Map parameter.
+# You need to change this setting to meet your requirements.
+
 map_bound: true
 load_geojson: true
 param:
@@ -16,16 +18,23 @@ param:
 # load geojson data.
 # edit this if you need to add data into your map.
 geojson:
-  -
-    name: Mock points
-    id: mock
-    type: point
-    url: 'assets/geo/json/mock_population.geojson'
-  -
-    name: Administration
-    id: admin
-    type: polygon
-    url: 'assets/geo/json/sarawak_admin.geojson'
+  point:
+    -
+      url: 'assets/data/json/dummy_points.geojson'
+      id: mock
+      name: Just Point-less point
+      feat:
+        - population
+
+  polygon: 
+    -
+      url: 'assets/data/json/sarawak_admin_dummy.geojson'
+      id: admin
+      name: Administration
+      feat:
+        - NAME_1
+        - POP
+  line:
 
 base:
   -

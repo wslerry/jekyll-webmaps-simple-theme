@@ -1,14 +1,14 @@
 <div id='container'>
-  <div id='map' class="leaflet-container leaflet-fade-anim" style="position: relative;"></div>
+  <div id='map'></div>
   <script>
     {% for map in site.data.mapdata.base %}
       var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
-        attribution: 'Developed by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
+        attribution: 'Website theme by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
       });
     {% endfor %}
     {% for map in site.data.mapdata.overlay %}
       var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
-        attribution: 'Developed by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
+        attribution: 'Website theme by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
       });
     {% endfor %}
 
@@ -21,7 +21,7 @@
 
         {% for map in site.data.mapdata.param %}
         var map = L.map('map', {
-          center: [{{ map.lat }},{{ map.long }}], //lat,long 2.750239, 112.996826
+          center: [{{ map.lat }},{{ map.long }}], //lat,long
           maxBounds: bounds,
           zoom: {{ map.zoom }},
           maxZoom: {{ map.maxZoom }},
@@ -35,7 +35,7 @@
     {% else %}
       {% for map in site.data.mapdata.param %}
         var map = L.map('map', {
-          center: [{{ map.lat }},{{ map.long }}], //lat,long 2.750239, 112.996826
+          center: [{{ map.lat }},{{ map.long }}], //lat,long
           zoom: {{ map.zoom }},
           maxZoom: {{ map.maxZoom }},
           minZoom: {{ map.minZoom }},
@@ -49,35 +49,54 @@
     // load geojson data
     {% if site.data.mapdata.load_geojson == true %}
 
-      function forEachFeature(feature, layer) {
-        var popupContent = feature.properties.toLocaleString() +'</p>';
-        layer.bindPopup(popupContent);
+      {% for map in site.data.mapdata.geojson.point %}
+      function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.population) {
+          layer.bindPopup(feature.properties.population);
+        }
       }
-
-      {% for map in site.data.mapdata.geojson %}
-        var {{ map.id }}= L.geoJson(null, {onEachFeature: forEachFeature});
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
       {% endfor %}
 
-      {% for map in site.data.mapdata.geojson %}
-        $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% for map in site.data.mapdata.geojson.polygon %}
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
       {% endfor %}
+
+      {% for map in site.data.mapdata.geojson.line %}
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% endfor %}
+
     {% endif %}
 
-
+    // load basemap
     var baseMaps = {
       {% for map in site.data.mapdata.base %}
       "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
       {% endfor %}
     };
 
+    // load overlay
     var overlay = {
       {% for map in site.data.mapdata.overlay %}
       "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
       {% endfor %}
+
       {% if site.data.mapdata.load_geojson == true %}
-        {% for map in site.data.mapdata.geojson %}
+
+        {% for map in site.data.mapdata.geojson.point %}
         "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
         {% endfor %}
+        {% for map in site.data.mapdata.geojson.polygon %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+        {% for map in site.data.mapdata.geojson.line %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+
       {% endif %}
     };
 
@@ -85,12 +104,17 @@
 
     map.addControl(new L.Control.Fullscreen());
 
-    // L.Routing.control({
-    //   waypoints: [
-    //   L.latLng(4.3868, 114.0169),
-    //   L.latLng(3.1947, 113.0874)
-    //   ],
-    //   routeWhileDragging: true,
-    // }).addTo(map);
+    // Add map legend to bottom-left corner
+    var legend = L.Control.extend({
+      options: { position: 'bottomleft' },
+      onAdd: function (map) {
+        var container = L.DomUtil.create('div', 'legend');
+        container.innerHTML = "<h6>Legends</h6><img src='assets/css/images/marker-icon.png' height=18px/> Just a bunch of pointless points";
+        return container;
+      }
+    });
+
+    map.addControl(new legend());
+
   </script>
 </div>

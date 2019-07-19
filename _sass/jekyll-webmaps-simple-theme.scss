@@ -1,3 +1,59 @@
+// main
+
+html, body, #container{
+  height: 100%;
+  overflow: hidden;
+}
+
+#container {
+  position: relative;
+  min-height: inherit;
+  height: 100%;
+  padding-top: .85rem;
+  padding-left: .85rem;
+  padding-right: .85rem;
+  padding-bottom: 7rem;
+}
+
+#map {
+  border-radius: .3rem;
+  position: relative;
+  height: 100%;
+  box-shadow: 2px 5px 8px rgba(0,0,0,0.4);
+}
+
+.web-attributes p {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 2px;
+  padding-top: 2px;
+}
+
+.legend {
+  background: rgba(255,253,250,1);
+  outline: 0;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-bottom: 100px;
+  // box-shadow: 0 1px 5px rgba(0,0,0,0.7);
+	padding: 1px 10px 1px 10px;
+}
+
+@media only screen and (max-width: 380px) {
+    .legend {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 300px) {
+    .legend {
+        display: none;
+    }
+}
+
+//
+// nav
+//
 .navigation-clean {
   background: #fff;
   padding-top: .75rem;
@@ -81,23 +137,6 @@
 
 .navbar-collapse.in {
   overflow-y: hidden;
-}
-
-html, body {
-  height: 100%;
-  padding: 10px;
-  padding-top: 0;
-  padding-bottom: 18px;
-  overflow: hidden;
-}
-
-#map {
-  height: 100%;
-}
-
-#container {
-  height: inherit;
-  padding-bottom: 50px;
 }
 
 //

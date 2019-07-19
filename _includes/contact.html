@@ -19,11 +19,7 @@
             <div class="form-group"><textarea rows="14" name="message" placeholder="Message" class="form-control"></textarea></div>
             <div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
         </form>
-        <div style="text-align:center">
-          <p style="font-size: 12px;">
-            &copy; {{ site.time | date: '%Y' }} {{ site.title }} - Developed by <a href="https://lerryws.xyz/">wslerry</a>.
-          </p>
-        </div>
+        {% include attributes.html %}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
