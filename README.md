@@ -4,7 +4,7 @@
 [![Gem Version](https://badge.fury.io/rb/jekyll-webmaps-simple-theme.svg)](https://badge.fury.io/rb/jekyll-webmaps-simple-theme)
 [![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D3.7-blue.svg)](https://jekyllrb.com/)
 
-[!.png](screenshot.png)
+![screenshot](screenshot.png)
 
 
 ## Installation
