@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Web Mapping in static website
 baseurl: ""
 url: ""
-port: 4010
+port: 
 google_analytics: UA-000000000-0
 
 # change this if you already installed the theme locally -->  theme: jekyll-webmaps-simple-theme
