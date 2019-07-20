@@ -12,12 +12,12 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/wslerry/jekyll-webmaps-simple-theme.git"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|_data|index|LICENSE|README)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_post|_sass|_data|index|LICENSE|README)!i) }
 
   spec.add_runtime_dependency "jekyll"
   spec.add_runtime_dependency "jekyll-feed"
   spec.add_runtime_dependency "jekyll-seo-tag"
-  spec.add_runtime_dependency "github-pages"
+  # spec.add_runtime_dependency "github-pages"
 
   spec.add_runtime_dependency "rouge"
   spec.add_runtime_dependency "liquid"
