@@ -9,7 +9,7 @@ google_analytics: UA-000000000-0
 highlighter: rouge
 # change this if you already installed the theme locally -->  theme: jekyll-webmaps-simple-theme
 # remote_theme: "wslerry/jekyll-webmaps-simple-theme"
-theme: jekyll-webmaps-simple-theme
+# theme: jekyll-webmaps-simple-theme
 
 # sass:
 #   sass_dir: _sass
