@@ -6,7 +6,7 @@ source "https://rubygems.org"
 # gem "jekyll"
 gem "rouge"
 gem "liquid"
-gem "jekyll-webmaps-simple-theme"
+#gem "jekyll-webmaps-simple-theme"
 group :jekyll_plugins do
   gem "jekyll-feed"
   gem "github-pages"
