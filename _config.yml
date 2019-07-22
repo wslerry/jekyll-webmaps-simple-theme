@@ -8,23 +8,24 @@ port:
 google_analytics: UA-000000000-0
 highlighter: rouge
 # change this if you already installed the theme locally -->  theme: jekyll-webmaps-simple-theme
-remote_theme: "wslerry/jekyll-webmaps-simple-theme"
-# theme: jekyll-webmaps-simple-theme
+# remote_theme: "wslerry/jekyll-webmaps-simple-theme"
+theme: jekyll-webmaps-simple-theme
 
-sass:
-  sass_dir: _sass
-  style: :compressed
+# sass:
+#   sass_dir: _sass
+#   style: :compressed
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - github-pages
 
-#exclude : [
-#   "Gemfile",
-#   "Gemfile.lock",
-#   "jekyll-webmaps-simple-theme.gemspec",
-#   "README.md",
-#   "LICENSE.txt",
-#  "jekyll-webmaps-simple-theme-0.1.0.gem",
-#   ]
+exclude : [
+  "Gemfile",
+  "Gemfile.lock",
+  "jekyll-webmaps-simple-theme.gemspec",
+  "README.md",
+  "LICENSE.txt",
+  "jekyll-webmaps-simple-theme-0.1.0.gem",
+  "examples"
+  ]

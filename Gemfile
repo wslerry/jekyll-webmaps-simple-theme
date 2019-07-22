@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 # gemspec
 
-gem "jekyll"
+# gem "jekyll"
 gem "rouge"
 gem "liquid"
 gem "jekyll-webmaps-simple-theme"

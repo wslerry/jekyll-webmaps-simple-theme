@@ -50,23 +50,37 @@
     {% if site.data.mapdata.load_geojson == true %}
 
       {% for map in site.data.mapdata.geojson.point %}
-      function onEachFeature(feature, layer) {
+      function onEachPointFeature(feature, layer) {
         // does this feature have a property named popupContent?
-        if (feature.properties && feature.properties.population) {
-          layer.bindPopup(feature.properties.population);
+        if (feature.properties && feature.properties.{{ map.feat }}) {
+          layer.bindPopup(feature.properties.{{ map.feat }});
         }
       }
-      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachPointFeature});
       $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
       {% endfor %}
 
       {% for map in site.data.mapdata.geojson.polygon %}
-      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+      function onEachPolygonFeature(feature, layer) {
+      // does this feature have a property named popupContent?
+      if (feature.properties && feature.properties.{{ map.feat }}) {
+        layer.bindPopup(feature.properties.{{ map.feat }});
+      }
+    }
+
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachPolygonFeature});
       $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
       {% endfor %}
 
       {% for map in site.data.mapdata.geojson.line %}
-      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachFeature});
+      function onEachLineFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.{{ map.feat }}) {
+          layer.bindPopup(feature.properties.{{ map.feat }});
+        }
+      }
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachLineFeature});
       $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
       {% endfor %}
 
@@ -117,4 +131,7 @@
     map.addControl(new legend());
 
   </script>
+  <script src="{{ site.url }}/assets/js/jquery.min.js"></script>
+  <script src="{{ site.url }}/assets/js/leaflet.js"></script>
+  <script src="{{ site.url }}/assets/js/Leaflet.fullscreen.min.js"></script>
 </div>

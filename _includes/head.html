@@ -20,10 +20,10 @@
   <link rel="stylesheet" href="{{ site.url }}/assets/css/font-awesome.min.css"  type="text/css">
 
   <!-- JS -->
-  <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/bootstrap.min.js' | relative_url }}"></script>
-	<script src="{{ '/assets/js/leaflet.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/Leaflet.fullscreen.min.js' | relative_url }}"></script>
+  <script src="{{ site.url }}/assets/js/jquery.min.js"></script>
+  <script src="{{ site.url }}/assets/js/bootstrap.min.js"></script>
+	<script src="{{ site.url }}/assets/js/leaflet.js"></script>
+  <script src="{{ site.url }}/assets/js/Leaflet.fullscreen.min.js"></script>
   {% for js in site.data.mapdata.base %}{% if js.extrajs == true %}<script type="text/javascript" src="{{ js.leaflet-js }}"></script>{% endif %}{% endfor %}
   {% for js in site.data.mapdata.overlay %}{% if js.extrajs == true %}<script type="text/javascript" src="{{ js.leaflet-js }}"></script>{% endif %}{% endfor %}
 

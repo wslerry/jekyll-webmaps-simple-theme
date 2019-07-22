@@ -26,14 +26,13 @@ geojson:
       feat:
         - population
 
-  polygon: 
+  polygon:
     -
       url: 'assets/data/json/sarawak_admin_dummy.geojson'
       id: admin
       name: Administration
       feat:
-        - NAME_1
-        - POP
+        - NAME_2
   line:
 
 base:

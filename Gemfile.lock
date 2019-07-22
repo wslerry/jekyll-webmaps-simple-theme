@@ -189,13 +189,6 @@ GEM
       jekyll (~> 3.3)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    jekyll-webmaps-simple-theme (0.1.4)
-      github-pages
-      jekyll
-      jekyll-feed
-      jekyll-seo-tag
-      liquid
-      rouge
     jemoji (0.10.2)
       gemoji (~> 3.0)
       html-pipeline (~> 2.2)
@@ -253,11 +246,9 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll
   jekyll-feed
   jekyll-include-cache
   jekyll-seo-tag
-  jekyll-webmaps-simple-theme
   liquid
   rouge
   wdm (>= 0.1.0)
