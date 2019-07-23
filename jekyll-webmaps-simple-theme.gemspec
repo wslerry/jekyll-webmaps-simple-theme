@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.3.0"
 
   spec.name          = "jekyll-webmaps-simple-theme"
-  spec.version       = "0.1.7"
+  spec.version       = "0.1.8"
   spec.authors       = ["Lerry William"]
   spec.email         = ["wslerry2@hotmail.com"]
 
@@ -12,10 +12,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/wslerry/jekyll-webmaps-simple-theme.git"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|_data|index|LICENSE|README)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|_data|_config|index|LICENSE|README|favicon)!i) }
 
-  spec.add_runtime_dependency "jekyll"
+  spec.add_runtime_dependency "jekyll", "~> 3.8"
 
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "rake", "~> 12.0"
 end

@@ -3,13 +3,15 @@
 source "https://rubygems.org"
 # gemspec
 
-gem "jekyll"
-gem "jekyll-include-cache"
+gem "jekyll", "~> 3.8"
+
 gem "jekyll-webmaps-simple-theme"
 
+# If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-seo-tag"
+  gem "jekyll-include-cache"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
