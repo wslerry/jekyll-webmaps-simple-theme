@@ -1,0 +1,97 @@
+# Map parameter.
+# You need to change this setting to meet your requirements.
+
+map_bound: true
+load_geojson: true
+param:
+  -
+    lat: 2.750239
+    long: 112.996826
+    zoom: 8
+    minZoom: 8
+    maxZoom: 18
+    x1: 108.99437294 #longitude lower left
+    y1: -0.04073073 #latitude lower left
+    x2: 115.89948784 #longitude upper right
+    y2: 5.75707846 #latitude upper right
+
+# load geojson data.
+# edit this if you need to add data into your map.
+geojson:
+  point:
+    -
+      url: 'assets/data/json/dummy_points.geojson'
+      id: mock
+      name: Just Point-less point
+      feat:
+        - population
+
+  polygon:
+    -
+      url: 'assets/data/json/sarawak_admin_dummy.geojson'
+      id: admin
+      name: Administration
+      feat:
+        - NAME_2
+  line:
+
+base:
+  -
+    select: true
+    extrajs: false
+    leaflet-js:
+    format: L.tileLayer
+    id: OSM
+    name: OpenStreetMap
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  -
+    extrajs: false
+    leaflet-js:
+    format: L.tileLayer
+    id: esri_sat
+    name: ESRI Imagery
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+    attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_street
+  #   name: ESRI Street
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_topo
+  #   name: ESRI Topo
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+
+overlay:
+  # -
+  #   select: false
+  #   extrajs: false
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_sat
+  #   name: ESRI Imagery
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   select: false
+  #   extrajs: false
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_street
+  #   name: ESRI Street
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'
+  # -
+  #   extrajs: false
+  #   leaflet-js:
+  #   format: L.tileLayer
+  #   id: esri_topo
+  #   name: ESRI Topo
+  #   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+  #   attribution: 'Powered by &copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">ESRI</a>'

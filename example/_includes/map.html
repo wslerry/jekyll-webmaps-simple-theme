@@ -1,0 +1,137 @@
+<div id='container'>
+  <div id='map'></div>
+  <script>
+    {% for map in site.data.mapdata.base %}
+      var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
+        attribution: 'Website theme by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
+      });
+    {% endfor %}
+    {% for map in site.data.mapdata.overlay %}
+      var {{% if map.id %}}{{ map.id }} =  {% if map.format %}{{ map.format }}{% endif %}('{% if map.url %}{{ map.url }}{% endif %}',{
+        attribution: 'Website theme by <a href="https://lerryws.xyz/">wslerry</a> | {% if map.attribution %}{{ map.attribution }}{% endif %}'
+      });
+    {% endfor %}
+
+    {% if site.data.mapdata.map_bound == true %}
+      {% for map in site.data.mapdata.param %}
+        var corner1  = L.latLng({{ map.y1 }}, {{ map.x1 }}),
+        corner2  = L.latLng({{ map.y2 }}, {{ map.x2 }});
+        var bounds = L.latLngBounds(corner1, corner2 );
+
+
+        {% for map in site.data.mapdata.param %}
+        var map = L.map('map', {
+          center: [{{ map.lat }},{{ map.long }}], //lat,long
+          maxBounds: bounds,
+          zoom: {{ map.zoom }},
+          maxZoom: {{ map.maxZoom }},
+          minZoom: {{ map.minZoom }},
+          layers: [
+          {% for map in site.data.mapdata.base %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %},
+          {% for map in site.data.mapdata.overlay %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %}]
+        });
+        {% endfor %}
+      {% endfor %}
+    {% else %}
+      {% for map in site.data.mapdata.param %}
+        var map = L.map('map', {
+          center: [{{ map.lat }},{{ map.long }}], //lat,long
+          zoom: {{ map.zoom }},
+          maxZoom: {{ map.maxZoom }},
+          minZoom: {{ map.minZoom }},
+          layers: [
+          {% for map in site.data.mapdata.base %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %},
+          {% for map in site.data.mapdata.overlay %}{% if map.select == true %}{{map.id}}{% endif %}{% endfor %}]
+        });
+      {% endfor %}
+    {% endif %}
+
+    // load geojson data
+    {% if site.data.mapdata.load_geojson == true %}
+
+      {% for map in site.data.mapdata.geojson.point %}
+      function onEachPointFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.{{ map.feat }}) {
+          layer.bindPopup(feature.properties.{{ map.feat }});
+        }
+      }
+
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachPointFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% endfor %}
+
+      {% for map in site.data.mapdata.geojson.polygon %}
+      function onEachPolygonFeature(feature, layer) {
+      // does this feature have a property named popupContent?
+      if (feature.properties && feature.properties.{{ map.feat }}) {
+        layer.bindPopup(feature.properties.{{ map.feat }});
+      }
+    }
+
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachPolygonFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% endfor %}
+
+      {% for map in site.data.mapdata.geojson.line %}
+      function onEachLineFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.{{ map.feat }}) {
+          layer.bindPopup(feature.properties.{{ map.feat }});
+        }
+      }
+      var {{ map.id }}= L.geoJson(null,{onEachFeature: onEachLineFeature});
+      $.getJSON("{{ map.url }}", function(data){ {{ map.id }}.addData(data);});
+      {% endfor %}
+
+    {% endif %}
+
+    // load basemap
+    var baseMaps = {
+      {% for map in site.data.mapdata.base %}
+      "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+      {% endfor %}
+    };
+
+    // load overlay
+    var overlay = {
+      {% for map in site.data.mapdata.overlay %}
+      "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+      {% endfor %}
+
+      {% if site.data.mapdata.load_geojson == true %}
+
+        {% for map in site.data.mapdata.geojson.point %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+        {% for map in site.data.mapdata.geojson.polygon %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+        {% for map in site.data.mapdata.geojson.line %}
+        "{% if map.name %}{{ map.name }}{% endif %}": {% if map.id %}{{ map.id }}{% endif %},
+        {% endfor %}
+
+      {% endif %}
+    };
+
+    L.control.layers(baseMaps, overlay, {collapsed: true}).addTo(map);
+
+    map.addControl(new L.Control.Fullscreen());
+
+    // Add map legend to bottom-left corner
+    var legend = L.Control.extend({
+      options: { position: 'bottomleft' },
+      onAdd: function (map) {
+        var container = L.DomUtil.create('div', 'legend');
+        container.innerHTML = "<h6>Legends</h6><img src='assets/css/images/marker-icon.png' height=18px/> Just a bunch of pointless points";
+        return container;
+      }
+    });
+
+    map.addControl(new legend());
+
+  </script>
+  <script src="{{ '/assets/js/jquery.min.js' | prepend: site.url }}"></script>
+	<script src="{{ '/assets/js/leaflet.js' | prepend: site.url }}"></script>
+  <script src="{{ '/assets/js/Leaflet.fullscreen.min.js' | prepend: site.url }}"></script>
+</div>

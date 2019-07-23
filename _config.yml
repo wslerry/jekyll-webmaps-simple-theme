@@ -23,4 +23,5 @@ exclude : [
   "jekyll-webmaps-simple-theme.gemspec",
   "README.md",
   "LICENSE.txt",
+  "example",
   ]
