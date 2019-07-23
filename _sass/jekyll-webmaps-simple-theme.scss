@@ -1,5 +1,4 @@
-@import "bootstrap-min-css";
-@import "font-awesome.min";
+$assetPath : "css/images";
 
 html, body, #map {
   height: 100%;
@@ -577,13 +576,13 @@ html, body, #map {
 }
 
 .leaflet-control-layers-toggle {
-  background-image: url(images/layers.png);
+  background-image: url(#{$assetPath}/layers.png);
   width: 36px;
   height: 36px;
 }
 
 .leaflet-retina .leaflet-control-layers-toggle {
-  background-image: url(images/layers-2x.png);
+  background-image: url(#{$assetPath}/layers-2x.png);
   background-size: 26px 26px;
 }
 
@@ -634,7 +633,7 @@ html, body, #map {
 /* Default icon URLs */
 
 .leaflet-default-icon-path {
-  background-image: url(images/marker-icon.png);
+  background-image: url(#{$assetPath}/marker-icon.png);
 }
 
 /* attribution and scale controls */
@@ -891,7 +890,7 @@ html, body, #map {
 /* Leaflet fullscreen */
 
 .leaflet-control-fullscreen a {
-  background: #fff url(images/fullscreen.png) no-repeat 0 0;
+  background: #fff url(#{$assetPath}/fullscreen.png) no-repeat 0 0;
   background-size: 26px 52px;
 }
 
@@ -927,6 +926,8 @@ html, body, #map {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .leaflet-control-fullscreen a {
-    background-image: url(images/fullscreen@2x.png);
+    background-image: url(#{$assetPath}/fullscreen@2x.png);
   }
 }
+
+@import "bootstrap.min";
