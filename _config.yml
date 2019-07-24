@@ -9,8 +9,8 @@ port: 4001
 google_analytics: UA-000000000-0 # fill in your google analytic code
 
 # change this if you already installed the theme locally -->  theme: jekyll-webmaps-simple-theme
-remote_theme: "wslerry/jekyll-webmaps-simple-theme"
-# theme: jekyll-webmaps-simple-theme
+# remote_theme: "wslerry/jekyll-webmaps-simple-theme"
+theme: jekyll-webmaps-simple-theme
 
 plugins:
   - jekyll-feed
