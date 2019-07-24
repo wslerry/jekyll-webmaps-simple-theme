@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 # gemspec
 
-gem "jekyll", "~> 3.8.5"
+gem "jekyll", "~> 3.8"
 
 gem "jekyll-webmaps-simple-theme"
 
