@@ -4,8 +4,8 @@ email: your_email@mail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Web Mapping in static website
 baseurl: ""
-url: ""
-port: 4001
+url: "https://lerryws.xyz/jekyll-webmaps-simple-theme/"
+port:
 google_analytics: UA-000000000-0 # fill in your google analytic code
 
 # change this if you already installed the theme locally -->  theme: jekyll-webmaps-simple-theme
