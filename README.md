@@ -6,6 +6,7 @@
 
 ![screenshot](screenshot.png)
 
+**[DEMO](https://lerryws.xyz/jekyll-webmaps-simple-theme/)**
 
 ## Installation
 
